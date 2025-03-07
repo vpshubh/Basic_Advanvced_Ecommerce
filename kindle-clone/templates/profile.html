@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Your Profile</h1>
+    
+    <!-- Favorite Books -->
+    <h2>Favorite Books</h2>
+    <div class="row">
+        {% for book in favorite_books %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="{{ book.cover_url }}" class="card-img-top" alt="{{ book.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text text-muted">By {{ book.author }}</p>
+                    <a href="{{ book.download_url }}" class="btn btn-primary" target="_blank">Download</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info">No favorite books yet.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

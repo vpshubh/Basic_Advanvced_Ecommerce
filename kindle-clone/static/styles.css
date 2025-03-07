@@ -1,0 +1,40 @@
+/* Light Mode */
+body.light-mode {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+body.dark-mode .card {
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+}
+
+body.dark-mode .card-title,
+body.dark-mode .card-text {
+    color: #ffffff !important;
+}
+
+body.dark-mode .alert-info {
+    background-color: #004085;
+    border-color: #004085;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Library</h1>
+    
+    <!-- Search Filters -->
+    <form method="GET" action="{{ url_for('library') }}" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <input type="text" class="form-control" name="search" placeholder="Search by title..." value="{{ search_query }}">
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Books Grid -->
+    <div class="row">
+        {% for book in books %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text text-muted">By {{ book.author }}</p>
+                    <div class="d-grid gap-2">
+                        {% if book.epub_url != "#" %}
+                        <a href="{{ book.epub_url }}" class="btn btn-primary" target="_blank">Download EPUB</a>
+                        {% endif %}
+                        {% if book.pdf_url != "#" %}
+                        <a href="{{ book.pdf_url }}" class="btn btn-secondary" target="_blank">Download PDF</a>
+                        {% endif %}
+                        {% if book.text_url != "#" %}
+                        <a href="{{ book.text_url }}" class="btn btn-outline-secondary" target="_blank">Download TXT</a>
+                        {% endif %}
+                        <a href="{{ url_for('save_favorite', book_title=book.title) }}" class="btn btn-outline-secondary">Add to Favorites</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12">
+            <div class="alert alert-info">No books found. Try another search term.</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
