@@ -88,7 +88,7 @@ def login():
             flash('Login successful!', 'success')
             return redirect(url_for('library'))
         else:
-            flash('Invalid username/password!', 'error')
+            flash('Invalid username/password!',  'error')
     return render_template('login.html')
 
 @app.route('/logout')
